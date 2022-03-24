@@ -15,6 +15,8 @@ def HRRN(data, debug = False):
             arrival_time = process[1]
             if arrival_time <= jiffy:
                 response_ratios.append([process[0], process[1], process[2], (jiffy - arrival_time + process[2]) / process[2]])
+            else:
+                break
 
         if response_ratios != []:
             response_ratios = sorted(response_ratios, key=lambda x: x[3], reverse = True)  # sorteren op hoogste response ratios
