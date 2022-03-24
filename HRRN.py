@@ -60,6 +60,6 @@ def HRRN(data, debug = False):
 
 #data = [[1, 0, 3], [2, 2, 6], [3, 4, 4], [4, 6, 5], [5, 8, 2]]  # zelfde data als op ppt, mean R is idd gelijk, dus onze berkeningen kloppen
 
-#data = parse_data("processen10000.xml")
-#scheduled = HRRN(data, True)
-#visualize_data(scheduled)
+data = parse_data("processen10000.xml")
+scheduled = HRRN(data, True)
+visualize_data(scheduled)

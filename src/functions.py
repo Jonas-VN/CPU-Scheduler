@@ -15,7 +15,7 @@ def parse_data(filename):
     return data
 
 
-def visualize_data(scheduled, color, label):
+def visualize_data(scheduled):
     scheduled = sorted(scheduled, key=lambda x: x[2])  # Sorteren op sevice time
     response_ratios = np.array([i[5] for i in scheduled])  # De response ratios die al gesorteerd zijn op service time
     waiting_times = np.array([i[3] for i in scheduled])  # De waiting times      "  "     "        "   "    "      "
@@ -34,6 +34,6 @@ def visualize_data(scheduled, color, label):
         gemiddelde_response_ratios_per_percentiel.append(sum(response_ratios_per_percentiel) / len(response_ratios_per_percentiel))  # gemiddelde toevoegen
         gemiddelde_waiting_times_per_percentiel.append(sum(waiting_times_per_percentiel) / len(waiting_times_per_percentiel))  # gemiddelde toevoegen
 
-    plt.plot(x, gemiddelde_response_ratios_per_percentiel, color=color, label=label)
+    plt.plot(x, gemiddelde_response_ratios_per_percentiel)
     #plt.plot(x, gemiddelde_waiting_times_per_percentiel, color=color)
     #plt.show()
