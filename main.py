@@ -1,20 +1,19 @@
 from src.functions import parse_data, visualize_data
 
 if __name__ == '__main__':
-    # Python program for implementation of RR Scheduling
-    data=parse_data("processen20000.xml")
-    index=0
-    total_p_no =len(data)
-    total_time = 0
-    total_time_counted = 0
+    data = parse_data("processen20000.xml")
+    index = 0
+    total_p_no = len(data)  #aantal processen
+    total_time = 0  #totale tijd te doen
+    total_time_counted = 0  #totale tijd van proces dat al gescheduled is
     # proc is process list
     proc = []
     wait_time = 0
     turnaround_time = 0
     for _ in range(total_p_no):
         # Getting the input for process
-        burst=data[index][2]
-        arrival=data[index][1]
+        burst = data[index][2]
+        arrival = data[index][1]
         remaining_time = burst
         # processes are appended to the proc list in following format
         proc.append([arrival, burst, remaining_time, 0])
@@ -27,7 +26,7 @@ if __name__ == '__main__':
         # traverse all the processes
         for i in range(len(proc)):
             # proc[i][2] here refers to remaining_time for each process i.e "i"
-            if proc[i][2] <= time_quantum and proc[i][2] >= 0:
+            if time_quantum >= proc[i][2] >= 0:
                 total_time_counted += proc[i][2]
                 total_time -= proc[i][2]
                 # the process has completely ended here thus setting it's remaining time to 0.
@@ -47,3 +46,4 @@ if __name__ == '__main__':
                 proc[i][3] = 1
     print("\nAvg Waiting Time is ", (wait_time * 1) / total_p_no)
     print("Avg Turnaround Time is ", (turnaround_time * 1) / total_p_no)
+    #visualize_data(proc)
