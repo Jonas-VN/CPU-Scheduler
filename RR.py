@@ -1,9 +1,10 @@
-from src.functions import parse_data, visualize_data
+from src.functions import calculate_mean
 
 def RR(data, quantum, debug = False):
     jiffy = 0
-    scheduled = []
-    aantal_processen = len(data)
+    scheduled = [
+        # [pid, arrival time, service time, waiting time, turnaround time, response ratio]
+    ]
     empty_cycle = True
 
     # Remaining service time toevoegen
@@ -37,27 +38,9 @@ def RR(data, quantum, debug = False):
                 break
         if empty_cycle: 
             jiffy+= 1
-
-    gemiddelde_turnaround_time = 0
-    gemiddelde_waiting_time = 0
-    gemiddelde_response_ratio = 0
-    for i in scheduled:
-        gemiddelde_waiting_time += i[3]
-        gemiddelde_turnaround_time += i[4]
-        gemiddelde_response_ratio += i[5]
-    gemiddelde_turnaround_time /= aantal_processen
-    gemiddelde_waiting_time /= aantal_processen
-    gemiddelde_response_ratio /= aantal_processen
-
-    print("=========================== RR ===========================")
-    print("Gemiddelde waiting_time: " + str(gemiddelde_waiting_time))
-    print("Gemiddelde turnaround_time: " + str(gemiddelde_turnaround_time))
-    print("Gemiddelde response_ratio: " + str(gemiddelde_response_ratio))
+            
+    if debug:
+        print("=========================== RR ===========================")
+        calculate_mean(scheduled)
 
     return scheduled
-
-
-data = parse_data("processen10000.xml")
-#data = [[1, 0, 3], [2, 2, 6], [3, 4, 4], [4, 6, 5], [5, 8, 2]]  # zelfde data als op ppt, mean R is idd gelijk, dus onze berkeningen kloppen
-scheduled = RR(data, 4, debug = True)
-visualize_data(scheduled)
