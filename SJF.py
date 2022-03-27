@@ -1,4 +1,4 @@
-from src.functions import parse_data, visualize_data
+from src.functions import calculate_mean
 
 def SJF(data, debug = False):
     jiffy = 0  # 1 jiffy is 1 CPU cycle
@@ -30,25 +30,9 @@ def SJF(data, debug = False):
             jiffy += service_time
         else:
             jiffy += 1
-
-    gemiddelde_turnaround_time = 0
-    gemiddelde_waiting_time = 0
-    gemiddelde_response_ratio = 0
-    for i in scheduled:
-        gemiddelde_waiting_time += i[3]
-        gemiddelde_turnaround_time += i[4]
-        gemiddelde_response_ratio += i[5]
-    gemiddelde_turnaround_time /= aantal_processen
-    gemiddelde_waiting_time /= aantal_processen
-    gemiddelde_response_ratio /= aantal_processen
-
-    print("=========================== SJF ===========================")
-    print("Gemiddelde waiting_time: " + str(gemiddelde_waiting_time))
-    print("Gemiddelde turnaround_time: " + str(gemiddelde_turnaround_time))
-    print("Gemiddelde response_ratio: " + str(gemiddelde_response_ratio))
+            
+    if debug:
+        print("=========================== SJF ===========================")
+        calculate_mean(scheduled)
 
     return scheduled
-
-#data = parse_data("processen50000.xml")
-#scheduled = SJF(data)
-#visualize_data(scheduled)
