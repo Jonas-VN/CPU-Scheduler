@@ -71,8 +71,7 @@ if __name__ == '__main__':
                 wait_time_pid = total_time_counted - proc[i][1] - proc[i][0]
                 turnaround_time_pid = total_time_counted - proc[i][0]
                 response_ratio_pid = turnaround_time_pid / proc[i][1]
-                print(
-                    f"PID: {proc[i][4]}\t Arrival time: {proc[i][0]}\t Service time: {proc[i][1]}\t Waiting time: {wait_time_pid}\t Turnaround time: {turnaround_time_pid}\t Response ratio: {round(response_ratio_pid, 2)}")
+                print(f"PID: {proc[i][4]}\t Arrival time: {proc[i][0]}\t Service time: {proc[i][1]}\t Waiting time: {wait_time_pid}\t Turnaround time: {turnaround_time_pid}\t Response ratio: {round(response_ratio_pid, 2)}")
                 scheduled.append([proc[i][4], proc[i][0], proc[i][1], wait_time_pid, turnaround_time_pid, response_ratio_pid])
 
 

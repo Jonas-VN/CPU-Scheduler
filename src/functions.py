@@ -35,5 +35,5 @@ def visualize_data(scheduled):
         gemiddelde_waiting_times_per_percentiel.append(sum(waiting_times_per_percentiel) / len(waiting_times_per_percentiel))  # gemiddelde toevoegen
 
     plt.plot(x, gemiddelde_response_ratios_per_percentiel)
-    #plt.plot(x, gemiddelde_waiting_times_per_percentiel, color=color)
-    #plt.show()
+    plt.plot(x, gemiddelde_waiting_times_per_percentiel)
+    plt.show()
