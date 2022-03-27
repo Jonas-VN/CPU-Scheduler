@@ -37,3 +37,25 @@ def visualize_data(scheduled):
     plt.plot(x, gemiddelde_response_ratios_per_percentiel)
     plt.plot(x, gemiddelde_waiting_times_per_percentiel)
     plt.show()
+
+    
+def calculate_mean(scheduled):
+    aantal_processen = len(scheduled)
+    gemiddelde_turnaround_time = 0
+    gemiddelde_waiting_time = 0
+    gemiddelde_response_ratio = 0
+
+    for process in scheduled:
+        gemiddelde_waiting_time += process[3]
+        gemiddelde_turnaround_time += process[4]
+        gemiddelde_response_ratio += process[5]
+
+    gemiddelde_turnaround_time /= aantal_processen
+    gemiddelde_waiting_time /= aantal_processen
+    gemiddelde_response_ratio /= aantal_processen
+
+    print("Gemiddelde waiting_time: " + str(gemiddelde_waiting_time))
+    print("Gemiddelde turnaround_time: " + str(gemiddelde_turnaround_time))
+    print("Gemiddelde response_ratio: " + str(gemiddelde_response_ratio))
+
+    return gemiddelde_waiting_time, gemiddelde_turnaround_time, gemiddelde_response_ratio
