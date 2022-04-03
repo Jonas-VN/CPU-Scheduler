@@ -15,6 +15,7 @@ def HRRN(data, debug = False):
             if arrival_time <= jiffy:
                 response_ratios.append([process[0], process[1], process[2], (jiffy - arrival_time + process[2]) / process[2]])
             else:
+                # data is al gesorteerd op arrival time, dus als er 1 niet voldoet zullen de volgende ook niet voldoen
                 break
 
         if response_ratios != []:
@@ -33,8 +34,7 @@ def HRRN(data, debug = False):
         else:
             jiffy += 1
 
-    if debug:
-        print("=========================== HRRN ===========================")
-        calculate_mean(scheduled)
+    print(f"=========================== HRRN ({len(scheduled)} processes) ===========================")
+    calculate_mean(scheduled)
 
     return scheduled
