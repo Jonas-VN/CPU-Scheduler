@@ -33,7 +33,7 @@ def calc_percentile(scheduled):
         gemiddelde_response_ratios_per_percentiel.append(sum(response_ratios_per_percentiel) / len(response_ratios_per_percentiel))  # gemiddelde toevoegen
         gemiddelde_waiting_times_per_percentiel.append(sum(waiting_times_per_percentiel) / len(waiting_times_per_percentiel))  # gemiddelde toevoegen
 
-    return gemiddelde_response_ratios_per_percentiel, gemiddelde_waiting_times_per_percentiel
+    return gemiddelde_waiting_times_per_percentiel, gemiddelde_response_ratios_per_percentiel
 
     
 def calculate_mean(scheduled):
