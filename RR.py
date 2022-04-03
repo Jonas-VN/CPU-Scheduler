@@ -39,8 +39,7 @@ def RR(data, quantum, debug = False):
         if empty_cycle: 
             jiffy+= 1
             
-    if debug:
-        print("=========================== RR ===========================")
-        calculate_mean(scheduled)
+    print(f"=========================== RR q={quantum} ({len(scheduled)} processes) ===========================")
+    calculate_mean(scheduled)
 
     return scheduled
