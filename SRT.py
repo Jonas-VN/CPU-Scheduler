@@ -39,8 +39,7 @@ def SRT(data, debug = False):
             else:
                 process[3] -= 1
 
-    if debug:
-        print("=========================== RR ===========================")
-        calculate_mean(scheduled)
+    print(f"=========================== SRT ({len(scheduled)} processes) ===========================")
+    calculate_mean(scheduled)
 
     return scheduled
