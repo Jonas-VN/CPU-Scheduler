@@ -2,7 +2,6 @@ from src.functions import calculate_mean
 
 def SJF(data, debug = False):
     jiffy = 0  # 1 jiffy is 1 CPU cycle
-    aantal_processen = len(data)
     scheduled = [
         # [pid, arrival time, service time, waiting time, turnaround time, response ratio]
     ]
@@ -31,8 +30,7 @@ def SJF(data, debug = False):
         else:
             jiffy += 1
             
-    if debug:
-        print("=========================== SJF ===========================")
-        calculate_mean(scheduled)
+    print(f"=========================== SJF ({len(scheduled)} processes) ===========================")
+    calculate_mean(scheduled)
 
     return scheduled
