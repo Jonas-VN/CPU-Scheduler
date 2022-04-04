@@ -107,7 +107,7 @@ def main():
         axis[1, 1].set_ylim([0, 30])
         axis[1, 1].legend(legend, loc="upper right", prop={'size': 8})
 
-        figure.suptitle("CPU Scheduling exercise (full screen this window)")
+        figure.suptitle("CPU Scheduling exercise")
         plt.show()
 
     else:
