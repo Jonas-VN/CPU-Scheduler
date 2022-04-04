@@ -10,7 +10,6 @@ from FB import FB
 
 def main():
     choice = int(input("0: All graphs individually (large)\n1: All graphs in one plot (small)\n"))
-    legend = ["FCFS", "SJF", "SRT", "HRRN", "RR (q=2)", "RR (q=4)", "RR (q=8)", "FB"]
 
     # FCFS
     data1 = parse_data("processen10000.xml")
@@ -52,18 +51,25 @@ def main():
     RR1_8 = calc_percentile(RR(data1, 8))
     RR2_8 = calc_percentile(RR(data2, 8))
 
-    # TODO FB
+    # FB
     data1 = parse_data("processen10000.xml")
     data2 = parse_data("processen20000.xml")
-    FB1 = calc_percentile(FB(data1, [4,8,12,16,20]))
-    FB2 = calc_percentile(FB(data2, [4,8,12,16,20]))
+    quanta1 = [2, 4, 8, 16, 32]
+    FB1_1 = calc_percentile(FB(data1, quanta1))
+    FB2_1 = calc_percentile(FB(data2, quanta1))
 
-    waiting_times1 = [FCFS1[0], SJF1[0], SRT1[0], HRRN1[0], RR1_2[0], RR1_4[0], RR1_8[0], FB1[0]]
-    waiting_times2 = [FCFS2[0], SJF2[0], SRT2[0], HRRN2[0], RR2_2[0], RR2_4[0], RR2_8[0], FB2[0]]
-    response_ratios1 = [FCFS1[1], SJF1[1], SRT1[1], HRRN1[1], RR1_2[1], RR1_4[1], RR1_8[1], FB1[1]]
-    response_ratios2 = [FCFS2[1], SJF2[1], SRT2[1], HRRN2[1], RR2_2[1], RR2_4[1], RR2_8[1], FB2[1]]
+    data1 = parse_data("processen10000.xml")
+    data2 = parse_data("processen20000.xml")
+    quanta2 = [4, 8, 16, 32, 64]
+    FB1_2 = calc_percentile(FB(data1, quanta2))
+    FB2_2 = calc_percentile(FB(data2, quanta2))
 
+    waiting_times1 = [FCFS1[0], SJF1[0], SRT1[0], HRRN1[0], RR1_2[0], RR1_4[0], RR1_8[0], FB1_1[0], FB1_2[0]]
+    waiting_times2 = [FCFS2[0], SJF2[0], SRT2[0], HRRN2[0], RR2_2[0], RR2_4[0], RR2_8[0], FB2_1[0], FB2_2[0]]
+    response_ratios1 = [FCFS1[1], SJF1[1], SRT1[1], HRRN1[1], RR1_2[1], RR1_4[1], RR1_8[1], FB1_1[1], FB1_2[1]]
+    response_ratios2 = [FCFS2[1], SJF2[1], SRT2[1], HRRN2[1], RR2_2[1], RR2_4[1], RR2_8[1], FB2_1[1], FB2_2[1]]
 
+    legend = ["FCFS", "SJF", "SRT", "HRRN", "RR (q=2)", "RR (q=4)", "RR (q=8)", f"FB {quanta1}", f"FB {quanta2}"]
     x = range(1, 101)
 
     if choice:
@@ -113,7 +119,7 @@ def main():
             plt.plot(x, i)
         plt.xlabel("Service time in percentiles")
         plt.ylabel("Waiting time")
-        plt.ylim([0, 20])
+        plt.ylim([0, 1000])
         plt.legend(legend)
         plt.title("10.000 processes waiting time")
         plt.show()
@@ -123,7 +129,7 @@ def main():
             plt.plot(x, i)
         plt.xlabel("Service time in percentiles")
         plt.ylabel("Waiting time")
-        plt.ylim([0, 20])
+        plt.ylim([0, 1000])
         plt.legend(legend)
         plt.title("20.000 processes waiting time")
         plt.show()
@@ -133,7 +139,7 @@ def main():
             plt.plot(x, i)
         plt.xlabel("Service time in percentiles")
         plt.ylabel("Response ratio")
-        plt.ylim([0, 1000])
+        plt.ylim([0, 20])
         plt.legend(legend)
         plt.title("10.000 processes response ratio")
         plt.show()
@@ -143,7 +149,7 @@ def main():
             plt.plot(x, i)
         plt.xlabel("Service time in percentiles")
         plt.ylabel("Response ratio")
-        plt.ylim([0, 1000])
+        plt.ylim([0, 20])
         plt.legend(legend)
         plt.title("10.000 processes response ratio")
         plt.show()
