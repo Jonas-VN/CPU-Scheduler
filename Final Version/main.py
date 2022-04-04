@@ -81,7 +81,7 @@ def main():
         [axis[0, 0].plot(x, i) for i in waiting_times1]
         axis[0, 0].set_xlabel("Service time in percentiles")
         axis[0, 0].set_ylabel("Waiting time")
-        axis[0, 0].set_ylim([0, 1000])
+        axis[0, 0].set_ylim([0, 2000])
         axis[0, 0].legend(legend, prop={'size': 8})
         axis[0, 0].set_title("10.000 processes")
 
@@ -89,7 +89,7 @@ def main():
         [axis[0, 1].plot(x, i) for i in waiting_times2]
         axis[0, 1].set_xlabel("Service time in percentiles")
         axis[0, 1].set_ylabel("Waiting time")
-        axis[0, 1].set_ylim([0, 1000])
+        axis[0, 1].set_ylim([0, 2000])
         axis[0, 1].legend(legend, prop={'size': 8})
         axis[0, 1].set_title("20.000 processes")
 
@@ -97,14 +97,14 @@ def main():
         [axis[1, 0].plot(x, i) for i in response_ratios1]
         axis[1, 0].set_xlabel("Service time in percentiles")
         axis[1, 0].set_ylabel("Response ratio")
-        axis[1, 0].set_ylim([0, 20])
+        axis[1, 0].set_ylim([0, 30])
         axis[1, 0].legend(legend, loc="upper right", prop={'size': 8})
 
         # Response ratios 20.000 processen
         [axis[1, 1].plot(x, i) for i in response_ratios2]
         axis[1, 1].set_xlabel("Service time in percentiles")
         axis[1, 1].set_ylabel("Response ratio")
-        axis[1, 1].set_ylim([0, 20])
+        axis[1, 1].set_ylim([0, 30])
         axis[1, 1].legend(legend, loc="upper right", prop={'size': 8})
 
         figure.suptitle("CPU Scheduling exercise (full screen this window)")
@@ -115,7 +115,7 @@ def main():
         [plt.plot(x, i) for i in waiting_times1]
         plt.xlabel("Service time in percentiles")
         plt.ylabel("Waiting time")
-        plt.ylim([0, 1000])
+        plt.ylim([0, 2000])
         plt.legend(legend)
         plt.title("10.000 processes waiting time")
         plt.show()
@@ -124,7 +124,7 @@ def main():
         [plt.plot(x, i) for i in waiting_times2]
         plt.xlabel("Service time in percentiles")
         plt.ylabel("Waiting time")
-        plt.ylim([0, 1000])
+        plt.ylim([0, 2000])
         plt.legend(legend)
         plt.title("20.000 processes waiting time")
         plt.show()
@@ -133,7 +133,7 @@ def main():
         [plt.plot(x, i) for i in response_ratios1]
         plt.xlabel("Service time in percentiles")
         plt.ylabel("Response ratio")
-        plt.ylim([0, 20])
+        plt.ylim([0, 30])
         plt.legend(legend)
         plt.title("10.000 processes response ratio")
         plt.show()
@@ -142,9 +142,9 @@ def main():
         [plt.plot(x, i) for i in response_ratios2]
         plt.xlabel("Service time in percentiles")
         plt.ylabel("Response ratio")
-        plt.ylim([0, 20])
+        plt.ylim([0, 30])
         plt.legend(legend)
-        plt.title("10.000 processes response ratio")
+        plt.title("20.000 processes response ratio")
         plt.show()
 
 
